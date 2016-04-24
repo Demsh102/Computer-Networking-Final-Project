@@ -11,7 +11,7 @@ public class MulticastServer
     DatagramSocket socket = null;
     DatagramPacket output = null;
     byte[] buffer;
-    InetAddress IPAddress = InetAddress.getByName("localhost");
+    InetAddress IPAddress = InetAddress.getByName("224.2.2.3");
 
     try
     {
