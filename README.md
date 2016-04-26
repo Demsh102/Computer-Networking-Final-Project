@@ -1,1 +1,4 @@
-# Computer-Networking-Final-Projectd
+# Computer-Networking-Final-Project
+The peer-to-peer option is currently functioning fully.  Once selected, the user is prompted to enter an acceptable multicast ip address, at which point the user joins that group, and can listen and send messages to other users on that ip.
+
+The client-server option is a bit more crude and unfinished, but has base functionality implemented.  Currently, the server is set to the multicast ip address of "224.2.2.3."  Later in development, this shall be configurable, and is currently only a debug setting.  Once the user opts to join a server, they are asked for the ip of the server (which, currently, must be the mentioned 224.2.2.3 address).  They are then asked to give an integer bettwen 0 and 9 for the chat channel they wish to join.  Users on the server can only interact with those on the same channel.
