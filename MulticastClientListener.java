@@ -51,12 +51,17 @@ public class MulticastClientListener implements Runnable
 				connectionSock.receive(inPacket);
 				String msg = new String(buffer, 0, inPacket.getLength());
 				
+				String temp[] = msg.split(":");
+				String name = temp[0];
+				msg = temp[1];
+				
 				//Sees if the int appended to the front of the message matches the channel the listener is listening to
 				//If so, displays that text
 				//Since this integer is (currently) only ever between 0 and 9, there should not be any issues with input muddling the channel info
 				if (Integer.parseInt(msg.substring(0,1)) == channel)
 				{
-					System.out.println("From " + "Anonymous" + " Msg : " + msg.substring(1, msg.length()));
+				
+					System.out.println("From " + name + " Msg : " + msg.substring(1, msg.length()));
 				}
 			}
 			else
@@ -64,7 +69,12 @@ public class MulticastClientListener implements Runnable
 				inPacket = new DatagramPacket(buffer, buffer.length);
 				connectionSock.receive(inPacket);
 				String msg = new String(buffer, 0, inPacket.getLength());
-				System.out.println("From " + "Anonymous" + " Msg : " + msg);
+				
+				
+				String temp[] = msg.split(":");
+				String name = temp[0];
+				msg = temp[1];
+				System.out.println("From " + name + " Msg : " + msg);
 			}
 		}
 		catch (IOException ioe)

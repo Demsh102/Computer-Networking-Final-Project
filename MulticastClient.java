@@ -72,7 +72,7 @@ public class MulticastClient
 			listener.setChannel(channel);
 			theThread.start();
 			
-			//Moces to chat
+			//Moves to chat
 			serverSocket = new DatagramSocket();
 			serverChat();
 		}
@@ -91,9 +91,10 @@ public class MulticastClient
 			while(true)
 			{
 				//Simply takes in user input, and sends it to the peerToPeer group joined
-				System.out.println("Enter a message: ");
 				String msg = reader.nextLine();
-	
+				
+				msg = name + ":" + msg;
+				
 				buffer = msg.getBytes();
 				output = new DatagramPacket(buffer, buffer.length, IPAddress, 8888);
 				socket.send(output);
@@ -113,12 +114,11 @@ public class MulticastClient
 		while(true)
 		{
 			//Takes in user input, and sends it to the server connected to
-			System.out.println("Enter a message: ");
 			String msg = reader.nextLine();
 		
 			//Appends the user's channel joined to the front of the message
 			//This is used later in the process by the server and listener to determine who recieves the message
-			msg = channel + msg;
+			msg = name + ":" + channel + msg;
 			
 	
 			buffer = msg.getBytes();
@@ -141,6 +141,10 @@ public class MulticastClient
 	Scanner input = new Scanner(System.in);  
   	
 	int choice = 0;
+	
+	
+	System.out.println("Enter a screen name: ");
+	name = input.nextLine();
 	
 	System.out.println("Would you like to connect tp/create a peer-to-peer chat (1) or join a server (2)?");
 	choice = input.nextInt();
